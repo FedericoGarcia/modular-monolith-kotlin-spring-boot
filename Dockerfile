@@ -40,9 +40,9 @@ FROM build AS testing
 CMD ["./gradlew", "test"]
 
 
-################################# DISTRIBUTION #################################
+################################## PRODUCTION ##################################
 
-FROM base-java AS distribution
+FROM base-java AS production
 
 COPY --from=build /app/build ./build
 
