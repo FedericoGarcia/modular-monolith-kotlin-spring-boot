@@ -30,14 +30,14 @@ RUN ./gradlew build \
 
 FROM build AS development
 
-CMD ["./gradlew", "run"]
+ENTRYPOINT ["./gradlew", "run"]
 
 
 #################################### TESTING ###################################
 
 FROM build AS testing
 
-CMD ["./gradlew", "test"]
+ENTRYPOINT ["./gradlew", "test"]
 
 
 ################################## PRODUCTION ##################################
