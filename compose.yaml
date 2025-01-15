@@ -1,0 +1,55 @@
+name: modular-monolith-kotlin-spring-boot
+
+services:
+  development:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - '3000:3000/tcp'
+    env_file:
+      - default.env
+      - .env
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+
+  production:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - '3000:3000/tcp'
+    env_file:
+      - default.env
+      - .env
+    healthcheck:
+      test: ['CMD', 'curl', 'http://localhost:3000/api/health']
+      interval: 1s
+      timeout: 3s
+      retries: 20
+
+  database:
+    image: postgres:17.2-alpine3.21
+    shm_size: 128mb
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: local
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready']
+      interval: 3s
+      timeout: 5s
+      retries: 20
+
+  testing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: testing
