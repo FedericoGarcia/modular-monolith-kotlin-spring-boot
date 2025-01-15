@@ -3,10 +3,10 @@ package org.example
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertNotNull
 
-class AppTest {
+class ApplicationTest {
     @Test
     fun appHasAGreeting() {
-        val classUnderTest = App()
+        val classUnderTest = Application()
         assertNotNull(classUnderTest.greeting, "app should have a greeting")
     }
 }

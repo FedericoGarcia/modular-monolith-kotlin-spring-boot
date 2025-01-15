@@ -23,7 +23,7 @@ java {
 }
 
 application {
-    mainClass = "org.example.AppKt"
+    mainClass = "org.example.ApplicationKt"
 }
 
 tasks.withType(Jar::class) {
