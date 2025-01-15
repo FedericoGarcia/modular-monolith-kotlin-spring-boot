@@ -26,6 +26,12 @@ application {
     mainClass = "org.example.AppKt"
 }
 
+tasks.withType(Jar::class) {
+    manifest {
+        attributes["Main-Class"] = application.mainClass
+    }
+}
+
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
