@@ -30,7 +30,7 @@ RUN ./gradlew build \
 
 FROM build AS development
 
-ENTRYPOINT ["./gradlew", "run"]
+ENTRYPOINT ["./gradlew", "bootRun"]
 
 
 #################################### TESTING ###################################
