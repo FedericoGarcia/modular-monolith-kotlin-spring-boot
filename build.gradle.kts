@@ -27,6 +27,11 @@ dependencies {
     implementation(libs.guava)
 }
 
+tasks.wrapper {
+    gradleVersion = "8.12"
+    distributionType = Wrapper.DistributionType.BIN
+}
+
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
