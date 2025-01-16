@@ -8,3 +8,4 @@ junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "jun
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.1.0" }
+spring-boot = { id = "org.springframework.boot", version = "3.4.1" }

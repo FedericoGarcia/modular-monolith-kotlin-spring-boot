@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.spring.boot)
 
     application
 }
@@ -24,12 +25,6 @@ java {
 
 application {
     mainClass = "org.example.ApplicationKt"
-}
-
-tasks.withType(Jar::class) {
-    manifest {
-        attributes["Main-Class"] = application.mainClass
-    }
 }
 
 tasks.named<Test>("test") {
