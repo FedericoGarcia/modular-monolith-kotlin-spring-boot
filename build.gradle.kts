@@ -32,6 +32,6 @@ tasks.wrapper {
     distributionType = Wrapper.DistributionType.BIN
 }
 
-tasks.named<Test>("test") {
+tasks.test {
     useJUnitPlatform()
 }
