@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @SpringBootApplication
-open class Application {}
+open class Application
 
 fun main(args: Array<String>) {
     runApplication<Application>(*args)
