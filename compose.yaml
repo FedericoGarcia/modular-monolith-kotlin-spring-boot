@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       target: development
     ports:
-      - '3000:3000/tcp'
+      - '8080:80/tcp'
     env_file:
       - default.env
       - .env
@@ -23,7 +23,7 @@ services:
       dockerfile: Dockerfile
       target: production
     ports:
-      - '3000:3000/tcp'
+      - '8080:80/tcp'
     env_file:
       - default.env
       - .env
