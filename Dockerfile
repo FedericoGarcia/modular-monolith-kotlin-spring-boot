@@ -17,7 +17,8 @@ COPY ./gradle ./gradle
 COPY ./settings.gradle.kts ./settings.gradle.kts
 COPY ./build.gradle.kts ./build.gradle.kts
 
-RUN ./gradlew dependencies
+RUN ./gradlew dependencies \
+    --no-daemon
 
 COPY ./src ./src
 
@@ -27,6 +28,7 @@ COPY ./src ./src
 FROM dependencies AS build
 
 RUN ./gradlew build \
+    --no-daemon \
     --warning-mode all \
     --exclude-task test
 
