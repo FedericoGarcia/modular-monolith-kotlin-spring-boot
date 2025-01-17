@@ -24,6 +24,7 @@ plugins {
 
 dependencies {
     implementation(libs.guava)
+    implementation(libs.spring.boot.starter.web)
 
     testImplementation(libs.junit.jupiter)
 
