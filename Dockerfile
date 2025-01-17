@@ -8,9 +8,9 @@ FROM amazoncorretto:${JAVA_VERSION}-alpine3.20 AS base-java
 WORKDIR /app
 
 
-##################################### BUILD ####################################
+################################# DEPENDENCIES #################################
 
-FROM base-java AS build
+FROM base-java AS dependencies
 
 COPY ./gradlew ./gradlew
 COPY ./gradle ./gradle
@@ -21,6 +21,11 @@ RUN ./gradlew dependencies
 
 COPY ./src ./src
 
+
+##################################### BUILD ####################################
+
+FROM dependencies AS build
+
 RUN ./gradlew build \
     --warning-mode all \
     --exclude-task test
@@ -28,14 +33,14 @@ RUN ./gradlew build \
 
 ################################## DEVELOPMENT #################################
 
-FROM build AS development
+FROM dependencies AS development
 
 ENTRYPOINT ["./gradlew", "bootRun"]
 
 
 #################################### TESTING ###################################
 
-FROM build AS testing
+FROM dependencies AS testing
 
 ENTRYPOINT ["./gradlew", "test"]
 
