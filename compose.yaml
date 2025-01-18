@@ -29,7 +29,7 @@ services:
       - default.env
       - .env
     healthcheck:
-      test: ['CMD', 'curl', 'http://localhost:3000/api/health']
+      test: ['CMD', 'curl', 'http://localhost:80/health']
       interval: 1s
       timeout: 3s
       retries: 20

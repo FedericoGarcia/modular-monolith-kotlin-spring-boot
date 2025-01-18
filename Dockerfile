@@ -5,6 +5,10 @@ ARG JAVA_VERSION=21.0.5
 
 FROM amazoncorretto:${JAVA_VERSION}-alpine3.20 AS base-java
 
+RUN apk add \
+    --no-cache \
+    curl
+
 WORKDIR /app
 
 
