@@ -1,9 +1,9 @@
-ARG JAVA_VERSION=21.0.5
+ARG JAVA_VERSION=21.0.7
 
 
 ################################### BASE JAVA ##################################
 
-FROM amazoncorretto:${JAVA_VERSION}-alpine3.20 AS base-java
+FROM amazoncorretto:${JAVA_VERSION}-alpine3.21 AS base-java
 
 RUN apk add \
     --no-cache \
