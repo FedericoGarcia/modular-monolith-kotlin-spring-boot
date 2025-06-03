@@ -24,15 +24,18 @@ plugins {
 
 dependencies {
     implementation(libs.guava)
+    implementation(libs.spring.boot.starter.actuator)
     implementation(libs.spring.boot.starter.web)
 
     testImplementation(libs.junit.jupiter)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.junit.jupiter)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.wrapper {
-    gradleVersion = "8.12"
+    gradleVersion = "8.14"
     distributionType = Wrapper.DistributionType.BIN
 }
 
@@ -41,6 +44,11 @@ tasks.bootRun {
 }
 
 tasks.test {
+    val mockitoCoreJar = configurations.testRuntimeClasspath.get().find { it.name.contains("mockito-core") }!!
+    jvmArgs = listOf(
+        "-javaagent:${mockitoCoreJar.absolutePath}",
+        "-Dorg.mockito.configuration.file=src/test/resources/mockito.properties"
+    )
     useJUnitPlatform()
     testLogging {
         showStackTraces = true
