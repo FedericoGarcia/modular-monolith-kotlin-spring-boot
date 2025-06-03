@@ -1,0 +1,32 @@
+version: "3"
+
+silent: true
+
+dotenv:
+  - default.env
+  - .env
+
+tasks:
+  default:
+    cmds:
+      - task --list
+
+  start:
+    desc: Start the application in development mode
+    cmds:
+      - docker compose up --build development --watch
+
+  start:production:
+    desc: Start the application in production mode
+    cmds:
+      - docker compose up --build production
+
+  test:
+    desc: Run tests
+    cmds:
+      - docker compose up --build test
+  
+  stop:
+    desc: Stop the application
+    cmds:
+      - docker compose down
