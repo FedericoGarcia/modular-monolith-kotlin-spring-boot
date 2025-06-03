@@ -1,4 +1,4 @@
-name: modular-monolith-kotlin-spring-boot
+name: app
 
 services:
   development:
