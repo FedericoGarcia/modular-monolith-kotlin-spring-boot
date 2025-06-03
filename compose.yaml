@@ -35,7 +35,7 @@ services:
       retries: 20
 
   database:
-    image: postgres:17.2-alpine3.21
+    image: postgres:17.5-alpine3.22
     shm_size: 128mb
     ports:
       - 5432:5432
